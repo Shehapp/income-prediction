@@ -11,12 +11,14 @@ class clean_data:
          # clean column names
          df.columns = df.columns.str.lower().str.replace(' ', '')
          df.columns = df.columns.str.lower().str.replace('-', '')
+         df.columns = df.columns.str.lower().str.replace('.', '')
          # clean values
          for col in df.columns:
              # if column type is object
              if df[col].dtype == 'object':
                  df[col] = df[col].str.lower().str.replace(' ', '')
-                 df[col] = df[col].str.replace('-', '')
+                 df[col] = df[col].str.lower().str.replace(' ', '')
+                 df[col] = df[col].str.lower().str.replace('.', '')
          return df
 
 
