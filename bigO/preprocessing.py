@@ -3,7 +3,7 @@ from sklearn.preprocessing import MinMaxScaler
 
 
 
-class clean_data:
+class preprocess_data:
 
      # set all column names to lower case and delete spaces from whole table symbols
      @staticmethod
@@ -33,6 +33,14 @@ class clean_data:
 
 
 
+
+     # Normalize numerical columns by MinMax normalization
+     @staticmethod
+     def normalize(df, numerical_columns):
+         scaler = MinMaxScaler()
+         df[numerical_columns] = scaler.fit_transform(df[numerical_columns])
+         return df
+
      # get one hot vectors
      @staticmethod
      def get_one_hot(df, column):
@@ -44,20 +52,9 @@ class clean_data:
          df.drop(column, axis=1, inplace=True)
          return df
 
-
-
      # get one hot vectors for categorical columns
      @staticmethod
      def get_one_hot_all(df, categorical_columns, self=None):
          for column in categorical_columns:
              df = self.get_one_hot(df, column)
-         return df
-
-
-
-     # Normalize numerical columns by MinMax normalization
-     @staticmethod
-     def normalize(df, numerical_columns):
-         scaler = MinMaxScaler()
-         df[numerical_columns] = scaler.fit_transform(df[numerical_columns])
          return df
