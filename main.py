@@ -25,10 +25,12 @@ XTrain, XTest, YTrain, YTest = train_test_split(X, Y, test_size=0.2)
 print("size of training data is", XTrain.shape)
 print("size of testing data is", XTest.shape)
 
+print(XTrain.columns)
+
 
 
 
 # Evaluate the model.
-classifiers.LogisticRegression(XTrain, YTrain, XTest, YTest, classifiers)
+classifiers.DecisionTree(XTrain, YTrain, XTest, YTest, classifiers)
 
 

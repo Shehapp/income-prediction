@@ -44,6 +44,7 @@ class getxandy:
                                'nativecountry']
         # drop from categorical_columns columns with correlation < 0.1
         categorical_columns = [x for x in categorical_columns if x not in drop_columns]
+        print(categorical_columns)
         df = preprocess_data.get_one_hot_all(df, categorical_columns, preprocess_data)
 
         # get labels
@@ -51,6 +52,7 @@ class getxandy:
 
         # get features
         X = df.drop(['income'], axis=1)
+        print(drop_columns)
         return X, Y, drop_columns
 
 
